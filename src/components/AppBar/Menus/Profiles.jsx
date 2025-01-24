@@ -32,7 +32,7 @@ function Profiles() {
           aria-controls={open ? 'basic-menu-profiles' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}>
-          <Avatar sx={{ width: 32, height: 32 }}
+          <Avatar sx={{ width: 34, height: 34 }}
             alt='ducdung'
             src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlyXtHZGpkLFDRCaG_69Oq7EBvLL872EoRPQ&s'
           />   </IconButton>
