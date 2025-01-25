@@ -37,9 +37,7 @@ function BoardBar() {
       paddingX: 2,
       overflowX: 'auto',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '##34495e' : '#1976d2'),
-      borderBottom: ' 1px solid #00bfa5',
       '&::-webkit-scrollbar-track':{ m:2 }
-
     }}>
       <Box sx={{ display: 'flex', alignItems:'center', gap: 2 }}>
         <Chip sx={MENU_STYLE}
@@ -75,7 +73,7 @@ function BoardBar() {
           sx={{
             color:'white',
             borderColor:'white',
-            '&:hover': {borderColor: 'white'}
+            '&:hover': { borderColor: 'white' }
           }}
         >Invite</Button>
         <AvatarGroup
@@ -89,7 +87,7 @@ function BoardBar() {
               border:'none',
               color:'white',
               cursor:'pointer',
-              '&:first-of-type':{bgcolor:'#a4b0de' }
+              '&:first-of-type':{ bgcolor:'#a4b0de' }
             }
           }}>
           <Tooltip title="ducdung203"><Avatar alt="ducdung203" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlyXtHZGpkLFDRCaG_69Oq7EBvLL872EoRPQ&s" /></Tooltip>
