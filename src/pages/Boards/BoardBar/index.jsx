@@ -37,7 +37,9 @@ function BoardBar() {
       paddingX: 2,
       overflowX: 'auto',
       bgcolor: (theme) => (theme.palette.mode === 'dark' ? '##34495e' : '#1976d2'),
-      borderBottom: ' 1px solid #00bfa5'
+      borderBottom: ' 1px solid #00bfa5',
+      '&::-webkit-scrollbar-track':{ m:2 }
+
     }}>
       <Box sx={{ display: 'flex', alignItems:'center', gap: 2 }}>
         <Chip sx={MENU_STYLE}
@@ -84,7 +86,10 @@ function BoardBar() {
               width: 34,
               height: 34,
               fontSize: 16,
-              border:'none'
+              border:'none',
+              color:'white',
+              cursor:'pointer',
+              '&:first-of-type':{bgcolor:'#a4b0de' }
             }
           }}>
           <Tooltip title="ducdung203"><Avatar alt="ducdung203" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlyXtHZGpkLFDRCaG_69Oq7EBvLL872EoRPQ&s" /></Tooltip>
