@@ -2,7 +2,7 @@ import Container from '@mui/material/Container'
 import AppBar from '~/components/AppBar/AppBar'
 import BoardBar from './BoardBar/BoardBar'
 import BoardContent from './BoardContent/BoardContent'
-import { mockData } from '~/apis/mock-data'
+// import { mockData } from '~/apis/mock-data'
 import { useEffect, useState } from 'react'
 import { fetchBoardDetailsAPI } from '~/apis'
 
@@ -11,7 +11,7 @@ function Board() {
 
   useEffect(() => {
     //Tạm thời fix cứng boardId , sau dùng react-router-dom
-    const boardId = '67baf3d81c497c27f1b97af4'
+    const boardId = '67db94197d1b99cc2fa47934'
     //call API
     fetchBoardDetailsAPI(boardId).then((board) => {
       setBoard(board)
