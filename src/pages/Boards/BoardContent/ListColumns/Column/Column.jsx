@@ -184,6 +184,7 @@ function Column({ column }) {
                 type="text"
                 size='small'
                 variant='outlined'
+                data-no-dnd='true'
                 autoFocus
                 value={newCardTitle}
                 onChange={(e) => setNewCardTitle(e.target.value)}
@@ -197,7 +198,7 @@ function Column({ column }) {
                   '& .MuiOutlinedInput-root':{
                     '& fieldset': { borderColor: (theme) => theme.palette.primary.main },
                     '&:hover fieldset': { borderColor: (theme) => theme.palette.primary.main },
-                    '&.Mui-focused fieldset': { borderColor: (theme) => theme.palette.primary.main}
+                    '&.Mui-focused fieldset': { borderColor: (theme) => theme.palette.primary.main }
                   },
                   '& .MuiOutlinedInput-input': {
                     borderRadius: 1

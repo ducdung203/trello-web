@@ -4,18 +4,19 @@ import { mapOrder } from '~/utils/sorts'
 import {
   DndContext,
   // PointerSensor,
-  MouseSensor,
-  TouchSensor,
+  // MouseSensor,
+  // TouchSensor,
   useSensor,
   useSensors,
   DragOverlay,
   defaultDropAnimationSideEffects,
   closestCorners,
   pointerWithin,
-  rectIntersection,
-  getFirstCollision,
-  closestCenter
+  // rectIntersection,
+  getFirstCollision
+  // closestCenter
 } from '@dnd-kit/core'
+import { MouseSensor, TouchSensor } from '~/customLibraries/DndKitSensors'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { arrayMove } from '@dnd-kit/sortable'
 import Card from './ListColumns/Column/ListCards/Card/Card'
@@ -251,7 +252,7 @@ function BoardContent({ board }) {
     })
   }
   //args = các đối số, tham số
-  const collisionDetectionStrategy = useCallback((args) =>{
+  const collisionDetectionStrategy = useCallback((args) => {
     //trường hợp kéo column thì dùng closestCorners
     if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) {
       return closestCorners({ ...args })
@@ -283,7 +284,7 @@ function BoardContent({ board }) {
       return [{ id: overId }]
     }
     //nếu overId là null thì trả về mảng rỗng
-    return lastOverId.current ? [{ id: lastOverId.current}]:[]
+    return lastOverId.current ? [{ id: lastOverId.current }]:[]
   }, [activeDragItemType, oderedColumns])
 
   return (
