@@ -23,6 +23,7 @@ import { CSS } from '@dnd-kit/utilities'
 import theme from '~/theme'
 import TextField from '@mui/material/TextField'
 import CloseIcon from '@mui/icons-material/Close'
+import { toast } from 'react-toastify'
 
 function Column({ column }) {
   const {
@@ -57,11 +58,16 @@ function Column({ column }) {
 
   const [newCardTitle, setNewCardTitle] = useState('')
   const addNewCard = () => {
-    if (!newCardTitle)
-    // console.error('Card title is required')
+    if (!newCardTitle) {
+      toast.error('Card title is required', {
+        position: 'bottom-right',
+        theme: 'colored'
+      })
       return
-      // console.log(newCardTitle)
-      // call API
+    }
+
+    // console.log(newCardTitle)
+    // call API
 
     //đóng trạng thái thêm card và clear input
     toggleNewCardForm()
