@@ -25,7 +25,7 @@ import TextField from '@mui/material/TextField'
 import CloseIcon from '@mui/icons-material/Close'
 import { toast } from 'react-toastify'
 
-function Column({ column }) {
+function Column({ column, createNewCard }) {
   const {
     attributes,
     listeners,
@@ -57,7 +57,7 @@ function Column({ column }) {
   const toggleNewCardForm = () => setOpenNewCardForm(!openNewCardForm)
 
   const [newCardTitle, setNewCardTitle] = useState('')
-  const addNewCard = () => {
+  const addNewCard = async () => {
     if (!newCardTitle) {
       toast.error('Card title is required', {
         position: 'bottom-right',
@@ -66,8 +66,13 @@ function Column({ column }) {
       return
     }
 
-    // console.log(newCardTitle)
-    // call API
+    // Tạo dữ liệu mới cho card để gọi API
+    const newCardData = {
+      title: newCardTitle,
+      columnId: column._id
+    }
+
+    await createNewCard(newCardData)
 
     //đóng trạng thái thêm card và clear input
     toggleNewCardForm()

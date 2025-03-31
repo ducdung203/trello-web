@@ -9,18 +9,23 @@ import TextField from '@mui/material/TextField'
 import CloseIcon from '@mui/icons-material/Close'
 
 
-function ListColumns({ columns }) {
+function ListColumns({ columns, createNewColumn, createNewCard }) {
   const [openNewColumnForm, setOpenNewColumnForm] = useState(false)
   const toggleNewColumnForm = () => setOpenNewColumnForm(!openNewColumnForm)
 
   const [newColumnTitle, setNewColumnTitle] = useState('')
-  const addNewColumn = () => {
+
+  const addNewColumn = async () => {
     if (!newColumnTitle) {
       toast.error('Column title is required')
       return
     }
-    // console.log(newColumnTitle)
-    // call API
+    //Tạo dữ liệu mới cho column để gọi API
+    const newColumnData = {
+      title: newColumnTitle
+    }
+
+    await createNewColumn(newColumnData)
 
     //đóng trạng thái thêm column và clear input
     toggleNewColumnForm()
@@ -37,7 +42,7 @@ function ListColumns({ columns }) {
         overflowX:'auto',
         '&::-webkit-scrollbar-track':{ m:2 }
       }}>
-        {columns.map(column => <Column key={column._id} column={column} />)}
+        {columns.map(column => <Column key={column._id} column={column} createNewCard={createNewCard}/>)}
         {/* Box add new column CTA */}
         {!openNewColumnForm
           ? <Box onClick ={toggleNewColumnForm} sx={{
