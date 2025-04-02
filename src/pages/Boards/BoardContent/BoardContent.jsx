@@ -29,7 +29,7 @@ const ACTIVE_DRAG_ITEM_TYPE ={
   CARD: 'ACTIVE_DRAG_ITEM_TYPE_CARD'
 }
 
-function BoardContent({ board, createNewColumn, createNewCard }) {
+function BoardContent({ board, createNewColumn, createNewCard, moveColumns }) {
   // const pointerSensor = useSensor(PointerSensor, { activationConstraint: { distance: 10 } })
   // Yêu cầu chuột di chuyển 10px mới kích hoạt event
   const mouseSensor = useSensor(MouseSensor, { activationConstraint: { distance: 10 } })
@@ -173,7 +173,7 @@ function BoardContent({ board, createNewColumn, createNewCard }) {
 
     if (!active||!over) return
 
-    //xử lí kéo thả column
+    //xử lí kéo thả card
     if (activeDragItemType===ACTIVE_DRAG_ITEM_TYPE.CARD) {
 
       const { id: activeDraggingCardId, data : { current: activeDraggingCardData } } = active
@@ -231,6 +231,9 @@ function BoardContent({ board, createNewColumn, createNewCard }) {
         // dùng arrayMonve dndkit để sắp xếp lại mảng column ban đầu
         const dndOderedColumns = arrayMove (oderedColumns, oldColumnIndex, newColumnIndex)
 
+        moveColumns(dndOderedColumns)
+
+        //vẫn gọi update lại state để render lại UI để tránh delay
         setOderedColumns(dndOderedColumns)
       }
     }
