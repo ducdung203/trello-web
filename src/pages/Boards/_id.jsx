@@ -2,7 +2,7 @@ import Container from '@mui/material/Container'
 import AppBar from '~/components/AppBar/AppBar'
 import BoardBar from './BoardBar/BoardBar'
 import BoardContent from './BoardContent/BoardContent'
-import { mockData } from '~/apis/mock-data'
+// import { mockData } from '~/apis/mock-data'
 import { useEffect, useState } from 'react'
 import { fetchBoardDetailsAPI, createNewColumnAPI, createNewCardAPI, updateBoardDetailsAPI, updateColumnDetailsAPI, moveCardToDifferentColumnAPI } from '~/apis'
 import { generatePlaceholderCard } from '~/utils/formatters'
@@ -119,10 +119,15 @@ function Board() {
     setBoard(newBoard)
 
     //Gọi API cập nhật lại
+    let prevCardOrderIds = dndOderedColumns.find(column => column._id === prevColumnId).cardOrderIds
+    //xử lí vấn đề khi kéo card cuối cùng trong column
+    if (prevCardOrderIds.length === 1) {
+      prevCardOrderIds = []
+    }
     moveCardToDifferentColumnAPI({
       currentCardId,
       prevColumnId,
-      prevCardOrderIds: dndOderedColumns.find(column => column._id === prevColumnId)?.cardOrderIds,
+      prevCardOrderIds,
       nextColumnId,
       nextCardOrderIds: dndOderedColumns.find(column => column._id === nextColumnId)?.cardOrderIds
     })
