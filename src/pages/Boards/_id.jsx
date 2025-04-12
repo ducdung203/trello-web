@@ -161,7 +161,7 @@ function Board() {
         width: '100vw'
       }}>
         <CircularProgress />
-        <Typography>Loading Board...</Typography>
+        <Typography>Đang khởi động server, vui lòng chờ...</Typography>
       </Box>
     )
   return (
