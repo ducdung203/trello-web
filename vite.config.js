@@ -4,6 +4,10 @@ import svgr from 'vite-plugin-svgr'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // cho phép vite sử dụng được process.env , mach định vite không hỗ trợ
+  define: {
+    'process.env': process.env
+  },
   plugins: [
     react(),
     svgr()
